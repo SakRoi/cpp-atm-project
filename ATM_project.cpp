@@ -17,7 +17,7 @@ int main(){
 
         //balance
         case 1:
-        std::cout << "the accounts balance is: " << balance;
+        std::cout << "the accounts balance is: " << balance << "\n";
         returnMenu();
         break;
 
@@ -30,11 +30,12 @@ int main(){
         /**this is here to check for negative value given, if one is given it will automatically move
          * the user to the main menu **/
         if (depositBalance < 0){
-            std::cout << "deposit amount is negative. \nReturning to menu.\n";
+            std::cout << "deposit amount is negative.\n";
         }
         else {
         balance = balance + depositBalance;
         }
+        returnMenu();
         break;
 
         //withdraw
@@ -51,27 +52,35 @@ int main(){
         else {
         balance = balance - withdrawBalance;
         }
+        returnMenu();
         break;
 
         case 4:
+        /**this return 0 will break the while (1) loop, this is done this way to not make a new int
+         * or bool variable for just the while loop **/
+
         return 0;
         break;
 
         default:
         std::cout << "invalid choice" << std::endl;
+        returnMenu();
         }
     }
 }
-void returnMenu() {
+
+void returnMenu() { 
+ /**this is the function used when ever the user has complited one of the options
+which don't cause the program to end**/
+
     int contSelection = 0;
-    //this will display the balance of the account
-    std::cout << "\nReturn to menu?\n" << "1. Menu\n" << "2. Exit" << std::endl;
+    std::cout << "Return to menu?\n" << "1. Menu\n" << "2. Exit" << std::endl;
     std::cin >> contSelection;
         switch (contSelection){
             case 1:
             break;
             case 2:
-            //using exit here because using return 0; doesn't end the program early.
+            //using exit() here instead of return 0 due to return 0 only returning back to the main()
             exit(0);
             break;
             default:
