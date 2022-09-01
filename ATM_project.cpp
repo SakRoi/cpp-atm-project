@@ -3,14 +3,13 @@
 
 //forward declaration for the functions
 void returnMenu();
-float depositMenu(float balance);
+double depositMenu(double balance);
+double withdrawMenu(double balance);
 
 
 int main(){
     int switchSelection = 0;
     double balance = 0;
-    double depositBalance = 0;
-    double withdrawBalance = 0;
 
     while (1){
         std::cout << "This is a bank ATM\n" << "---------------------\n" << "please make a choice: \n" << "1. Balance \n" << "2. Deposit \n" << "3. Withdraw \n" << "4. Exit\n" << "---------------------" << std::endl;
@@ -31,7 +30,8 @@ int main(){
 
         //withdraw
         case 3:
-        //this will give an opinion to remove from the account's balance
+        balance = withdrawMenu(balance);
+        /*//this will give an opinion to remove from the account's balance
         std::cout << "Insert the amount of money you will be withdrawing: \n";
         std::cin >> withdrawBalance;
         std::cout << "\n";
@@ -42,7 +42,7 @@ int main(){
         }
         else {
         balance = balance - withdrawBalance;
-        }
+        }*/
         returnMenu();
         break;
 
@@ -79,8 +79,8 @@ which don't cause the program to end**/
             }
 }
 
-float depositMenu(float balance) {
-    float depositBalance = 0;
+double depositMenu(double balance) {
+    double depositBalance = 0;
     //this will give an opinion to add to the account's balance
     std::cout << "Please insert the amount of money you will be depositing: \n";
     std::cin >> depositBalance;
@@ -93,5 +93,21 @@ float depositMenu(float balance) {
     }
     else {
             return balance + depositBalance;
+    }
+}
+
+double withdrawMenu(double balance) {
+    double withdrawBalance = 0;
+    //this will give an opinion to remove from the account's balance
+    std::cout << "Insert the amount of money you will be withdrawing: \n";
+    std::cin >> withdrawBalance;
+    std::cout << "\n";
+    if (withdrawBalance < 0){ 
+         //this is here to check if the given value is negative and convert it back to a positive one.
+        withdrawBalance = withdrawBalance * -1;
+        return balance - withdrawBalance;
+    }
+    else {
+         return balance - withdrawBalance;
     }
 }
