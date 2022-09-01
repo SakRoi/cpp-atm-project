@@ -31,18 +31,6 @@ int main(){
         //withdraw
         case 3:
         balance = withdrawMenu(balance);
-        /*//this will give an opinion to remove from the account's balance
-        std::cout << "Insert the amount of money you will be withdrawing: \n";
-        std::cin >> withdrawBalance;
-        std::cout << "\n";
-        if (withdrawBalance < 0){ 
-            //this is here to check if the given value is negative and convert it back to a positive one.
-            withdrawBalance = withdrawBalance * -1;
-            balance = balance - withdrawBalance;
-        }
-        else {
-        balance = balance - withdrawBalance;
-        }*/
         returnMenu();
         break;
 
