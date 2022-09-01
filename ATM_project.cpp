@@ -1,8 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
 
-//forward declaration for returnMenu function
+//forward declaration for the functions
 void returnMenu();
+float depositMenu(float balance);
+
 
 int main(){
     int switchSelection = 0;
@@ -23,18 +25,7 @@ int main(){
 
         //deposit
         case 2:
-        //this will give an opinion to add to the account's balance
-        std::cout << "Please insert the amount of money you will be depositing: \n";
-        std::cin >> depositBalance;
-        std::cout << "\n";
-        /**this is here to check for negative value given, if one is given it will automatically move
-         * the user to the main menu **/
-        if (depositBalance < 0){
-            std::cout << "deposit amount is negative.\n";
-        }
-        else {
-        balance = balance + depositBalance;
-        }
+        balance = depositMenu(balance);
         returnMenu();
         break;
 
@@ -86,4 +77,21 @@ which don't cause the program to end**/
             default:
             std::cout << "invalid option, returning to menu" << std::endl;
             }
+}
+
+float depositMenu(float balance) {
+    float depositBalance = 0;
+    //this will give an opinion to add to the account's balance
+    std::cout << "Please insert the amount of money you will be depositing: \n";
+    std::cin >> depositBalance;
+    std::cout << "\n";
+     /**this is here to check for negative value given, if one is given it will automatically move
+     * the user to the main menu **/
+    if (depositBalance < 0){
+            std::cout << "deposit amount is negative.\n";
+            return balance;
+    }
+    else {
+            return balance + depositBalance;
+    }
 }
